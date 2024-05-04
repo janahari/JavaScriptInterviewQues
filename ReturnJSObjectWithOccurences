@@ -1,0 +1,32 @@
+import "./styles.css";
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>{findFrequenceOfChar({ name: "aabbc" })}</h1>
+      <h2>Start editing to see some magic happen!</h2>
+    </div>
+  );
+}
+
+const findFrequenceOfChar = ({ name }) => {
+ 
+  let nameStr = name.toLowerCase();
+  const res = {};
+  for (let i = 0; i < name.length; i++) {
+    let l = name[i];
+    if (res[l]) {
+      res[l]++;
+    } else {
+      res[l] = 1;
+    }
+  }
+  console.log(res);
+ // return res;
+  return Object.entries(res).map(([char, count]) => (
+    <div key={char}>
+      <span>{char}: </span>
+      <span>{count}</span>
+    </div>
+  ));
+};
